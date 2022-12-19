@@ -1,0 +1,42 @@
+class Solution {
+
+    public boolean isValid(String S) {
+
+        if(S.length() % 2 != 0) return false;
+
+        Stack<String> s = new Stack<String>();
+
+        for(char c : S.toCharArray()){
+
+            String cc = String.valueOf(c);
+
+            if(c == '{' || c == '(' || c == '[') s.push(cc);
+
+            else{
+
+                if(s.empty()) return false;
+
+                char top = s.peek().toCharArray()[0];
+
+                if( (top == '{' && c == '}') ||
+
+                    (top == '(' && c == ')') ||
+
+                    (top == '[' && c == ']') ){
+
+                    s.pop();
+
+                } else return false;
+
+            }
+
+        }
+
+        return s.empty();
+
+    }
+
+}
+ 
+        
+
